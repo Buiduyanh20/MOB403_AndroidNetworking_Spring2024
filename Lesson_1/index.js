@@ -50,3 +50,52 @@ app.post("/product/post", (req, res) => {
       res.status(500).json({ error: "post không thành công" });
     });
 });
+
+app.delete("/product/:id", (req, res) => {
+  const productId = req.params.id;
+  Product.findByIdAndDelete(productId)
+
+    .then((product) => {
+      if (!product) {
+        return res
+          .status(200)
+          .json({ error: "Không tìm thấy sản phẩm để xóa" });
+      }
+      res.status(200).json({ message: "Xóa sản phẩm thành công" });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Lỗi khi xóa sản phẩm" });
+    });
+});
+
+app.get("/product/:id", (req, res) => {
+  const productId = req.params.id;
+  Product.findById(productId)
+    .then((product) => {
+      if (!product) {
+        return res.status(404).json({ error: "Không tìm thấy sản phẩm" });
+      }
+      res.status(200).json(product);
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Lỗi khi lấy dữ liệu sản phẩm" });
+    });
+});
+
+app.put("/product/:id", (req, res) => {
+  const productId = req.params.id;
+  Product.findByIdAndUpdate(productId, req.body, { new: true })
+    .then((product) => {
+      if (!product) {
+        return res
+          .status(404)
+          .json({ error: "Không tìm thấy sản phẩm để cập nhật" });
+      }
+      res
+        .status(200)
+        .json({ message: "Cập nhật sản phẩm thành công", product });
+    })
+    .catch((error) => {
+      res.status(500).json({ error: "Lỗi khi cập nhật sản phẩm" });
+    });
+});
