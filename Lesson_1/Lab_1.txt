@@ -1,0 +1,5 @@
+				lab1: 
+viết api
+- get dữ liệu theo id
+- delete dữ liệu theo id
+- update dữ liệu theo id
