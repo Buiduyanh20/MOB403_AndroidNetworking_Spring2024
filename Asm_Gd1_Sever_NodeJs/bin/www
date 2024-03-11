@@ -1,0 +1,98 @@
+#!/usr/bin/env node
+
+/**
+ Chức năng của đoạn mã này là:
+- Thiết lập và cấu hình một ứng dụng Express thông qua module app.
+- Tạo một máy chủ HTTP sử dụng ứng dụng Express đã được cấu hình.
+- Xác định cổng mà máy chủ sẽ lắng nghe kết nối từ các client.
+- Xử lý các lỗi có thể xảy ra trong quá trình khởi động máy chủ, bao gồm xử lý lỗi khi cổng đã được sử dụng hoặc yêu cầu quyền truy cập đặc quyền cao hơn.
+- Đăng ký các sự kiện lắng nghe cho máy chủ, bao gồm sự kiện khi máy chủ bắt đầu lắng nghe kết nối từ các client và sự kiện khi có lỗi xảy ra trong quá trình khởi động máy chủ.
+Tóm lại, đoạn mã này tạo ra một máy chủ HTTP để chạy ứng dụng web được xây dựng bằng Express và xử lý các sự kiện và lỗi liên quan đến hoạt động của máy chủ.
+ */
+
+/**
+ * Module dependencies.
+ */
+// Import các module cần thiết
+var app = require("../app"); // Import ứng dụng Express từ file app.js
+var debug = require("debug")("ph26376-mob402-asm:server"); // Import module debug để hiển thị thông điệp gỡ lỗi
+var http = require("http"); // Import module HTTP của Node.js
+
+/**
+ * Get port from environment and store in Express.
+ */
+// Lấy cổng (port) từ môi trường và lưu vào Express
+var port = normalizePort(process.env.PORT || "3000"); // Chuẩn hóa cổng nếu được chỉ định, nếu không, sử dụng cổng mặc định là 3000
+app.set("port", port); // Thiết lập cổng cho ứng dụng Express
+
+/**
+ * Create HTTP server.
+ */
+// Tạo máy chủ HTTP
+var server = http.createServer(app); // Tạo máy chủ HTTP sử dụng ứng dụng Express
+
+/**
+ * Listen on provided port, on all network interfaces.
+ */
+// Lắng nghe trên cổng đã được chỉ định, trên tất cả các giao diện mạng
+server.listen(port); // Máy chủ bắt đầu lắng nghe kết nối trên cổng đã được chỉ định
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+// Chuẩn hóa cổng
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // Nếu không phải là số, có thể là một pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // Nếu là một số dương, trả về cổng
+    return port;
+  }
+
+  return false; // Trả về false nếu không hợp lệ
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+// Xử lý sự kiện khi có lỗi xảy ra trong quá trình khởi động máy chủ
+function onError(error) {
+  if (error.syscall !== "listen") {
+    throw error;
+  }
+
+  var bind = typeof port === "string" ? "Pipe " + port : "Port " + port;
+
+  // Xử lý lỗi cụ thể với thông điệp thân thiện
+  switch (error.code) {
+    case "EACCES":
+      console.error(bind + " requires elevated privileges");
+      process.exit(1);
+      break;
+    case "EADDRINUSE":
+      console.error(bind + " is already in use");
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+// Xử lý sự kiện khi máy chủ bắt đầu lắng nghe kết nối từ các client
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === "string" ? "pipe " + addr : "port " + addr.port;
+  debug("Listening on " + bind);
+}
+
+// Gán các sự kiện lắng nghe cho máy chủ
+server.on("error", onError); // Sự kiện lỗi
+server.on("listening", onListening); // Sự kiện lắng nghe
