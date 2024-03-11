@@ -3,3 +3,5 @@ viết api
 - get dữ liệu theo id
 - delete dữ liệu theo id
 - update dữ liệu theo id
+
+Đây là file bài tập Lab 1 : Sử dụng Node JS để tạo server và dùng postman dể Thêm - Sửa - Xóa API, sử dụng MongoDB để xem dữ liệu.
