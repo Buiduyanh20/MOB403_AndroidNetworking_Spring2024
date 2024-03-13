@@ -92,6 +92,7 @@ exports.postProduct = async (req, res, next) => {
 
     const newProduct = new productModel.productModel({
       name: req.body.name,
+      author: req.body.author,
       price: req.body.price,
       desc: req.body.desc,
       image: url_image,

@@ -3,6 +3,7 @@ var db = require("./db");
 const productSchema = new db.mongoose.Schema(
   {
     name: { type: String, require: true },
+    author: { type: String, require: true },
     price: { type: Number, require: true },
     desc: { type: String, require: false },
     image: { type: String, require: true },

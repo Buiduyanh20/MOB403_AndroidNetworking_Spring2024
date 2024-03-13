@@ -62,6 +62,12 @@
                                                 href="?sort=name&order=<%= sortOrder === 1 ? 'desc' : 'asc' %>&keyword=<%= searchKeyword %>&category=<%= searchCategory %>"><i
                                                     class="fas fa-sort<%= sortField === 'name' ? sortOrder === 1 ? '-up' : '-down' : '' %>"></i></a>
                                         </th>
+                                        <th>
+                                            Tác giả
+                                            <a
+                                                href="?sort=name&order=<%= sortOrder === 1 ? 'desc' : 'asc' %>&keyword=<%= searchKeyword %>&category=<%= searchCategory %>"><i
+                                                    class="fas fa-sort<%= sortField === 'name' ? sortOrder === 1 ? '-up' : '-down' : '' %>"></i></a>
+                                        </th>
                                         <th>Ảnh bìa</th>
                                         <th>PDF</th>
                                         <th>
@@ -82,6 +88,9 @@
                                             </td>
                                             <td>
                                                 <%= element.name %>
+                                            </td>
+                                            <td>
+                                                <%= element.author %>
                                             </td>
                                             <td>
                                                 <img src="<%= element.image %>" alt="">
