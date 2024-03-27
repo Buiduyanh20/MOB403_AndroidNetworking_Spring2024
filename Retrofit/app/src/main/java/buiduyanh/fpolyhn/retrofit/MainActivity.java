@@ -1,14 +1,21 @@
 package buiduyanh.fpolyhn.retrofit;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class MainActivity extends AppCompatActivity {
+    private EditText edtName,edtPrice,edtBrand;
+    private Button btnOK;
+    private RecyclerView RecyclerProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +27,19 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        edtName = findViewById(R.id.edtName);
+        edtPrice = findViewById(R.id.edtPrice);
+        edtBrand = findViewById(R.id.edtBrand);
+
+        RecyclerProduct = findViewById(R.id.RecyclerProduct);
+        btnOK = findViewById(R.id.btnOK);
+        btnOK.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 }
