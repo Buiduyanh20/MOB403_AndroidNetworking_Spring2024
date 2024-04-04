@@ -22,7 +22,7 @@ public interface ApiService {
 
 
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://10.24.32.59:8000/")
+            .baseUrl("http://192.168.0.101:8000/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);

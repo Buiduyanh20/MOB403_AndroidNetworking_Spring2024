@@ -93,10 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         final EditText edtName = dialogView.findViewById(R.id.edt_name);
         final EditText edtPrice = dialogView.findViewById(R.id.edt_price);
-        final EditText edtQuantity = dialogView.findViewById(R.id.edt_quantity);
         final EditText edtColor = dialogView.findViewById(R.id.edt_color);
-        final EditText edtImg = dialogView.findViewById(R.id.edt_img);
-        final EditText edtDescription = dialogView.findViewById(R.id.edt_description);
+
         final Button btnAdd = dialogView.findViewById(R.id.btn_add);
         final Button btnCanel = dialogView.findViewById(R.id.btn_canel);
 
@@ -126,13 +124,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 String name = edtName.getText().toString().trim();
                 String price = edtPrice.getText().toString().trim();
                 String color = edtColor.getText().toString().trim();
-                String img = edtImg.getText().toString().trim();
-                String description = edtDescription.getText().toString().trim();
-                String quantity = edtQuantity.getText().toString().trim();
-                if (name.isEmpty() || price.isEmpty() || quantity.isEmpty() || color.isEmpty() || img.isEmpty() || description.isEmpty()) {
+
+
+                if (name.isEmpty() || price.isEmpty() || color.isEmpty() ) {
                     Toast.makeText(MainActivity.this, "Không được để trống", Toast.LENGTH_SHORT).show();
                 } else {
-                    addNewData(name, Integer.parseInt(price), color, img, Integer.parseInt(quantity), description);
+                    addNewData(name, Integer.parseInt(price), color);
                     dialog.dismiss();
                 }
 
@@ -147,14 +144,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void addNewData(String name, int price, String color, String img, int quantity, String description) {
+    private void addNewData(String name, int price, String color) {
         ProductModel product = new ProductModel();
         product.setName(name);
         product.setPrice(price);
         product.setColor(color);
-        product.setImg(img);
-        product.setDescription(description);
-        product.setQuantity(quantity);
+
 
         ApiService.apiService.addCar(product).enqueue(new Callback<List<ProductModel>>() {
             @Override
@@ -178,14 +173,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    private void updateCar(String id, String name, int price, String color, String img, int quantity, String description) {
+    private void updateCar(String id, String name, int price, String color) {
         ProductModel productModel = new ProductModel();
         productModel.setName(name);
         productModel.setPrice(price);
         productModel.setColor(color);
-        productModel.setImg(img);
-        productModel.setDescription(description);
-        productModel.setQuantity(quantity);
+
 
         Call<List<ProductModel>> call = ApiService.apiService.updateCar(id, productModel);
         call.enqueue(new Callback<List<ProductModel>>() {
@@ -220,9 +213,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText edName = dialog.findViewById(R.id.edt_name);
         EditText edPrice = dialog.findViewById(R.id.edt_price);
         EditText edColor = dialog.findViewById(R.id.edt_color);
-        EditText edImg = dialog.findViewById(R.id.edt_img);
-        EditText edDescription = dialog.findViewById(R.id.edt_description);
-        EditText edQuantity = dialog.findViewById(R.id.edt_quantity);
+
 
         Button btnEdit = dialog.findViewById(R.id.btn_add);
         Button btnCancel = dialog.findViewById(R.id.btn_canel);
@@ -231,21 +222,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edName.setText(model.getName());
         edPrice.setText(String.valueOf(model.getPrice()));
         edColor.setText(model.getColor());
-        edImg.setText(model.getImg());
-        edDescription.setText(model.getDescription());
-        edQuantity.setText(String.valueOf(model.getQuantity()));
+
 
         btnEdit.setOnClickListener(v -> {
             String name = edName.getText().toString().trim();
             String price = edPrice.getText().toString().trim();
             String color = edColor.getText().toString().trim();
-            String img = edImg.getText().toString().trim();
-            String description = edDescription.getText().toString().trim();
-            String quantity = edQuantity.getText().toString().trim();
-            if (name.isEmpty() || price.isEmpty() || quantity.isEmpty() || color.isEmpty() || description.isEmpty() || img.isEmpty()) {
+
+            if (name.isEmpty() || price.isEmpty() ||  color.isEmpty()) {
                 Toast.makeText(this, "Không được để trống", Toast.LENGTH_SHORT).show();
             } else {
-                updateCar(model.getId(), name, Integer.parseInt(price), color, img, Integer.parseInt(quantity), description);
+                updateCar(model.getId(), name, Integer.parseInt(price), color);
                 dialog.dismiss();
             }
         });

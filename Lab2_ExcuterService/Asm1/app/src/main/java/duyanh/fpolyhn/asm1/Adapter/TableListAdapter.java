@@ -43,10 +43,7 @@ public class TableListAdapter extends RecyclerView.Adapter<TableListAdapter.Tabl
         }
         holder.priceTextView.setText(String.valueOf(model.getPrice()));
         holder.nameTextView.setText(model.getName());
-        holder.quantityTextView.setText(String.valueOf(model.getQuantity()));
         holder.tvColor.setText(model.getColor());
-        holder.tvDescription.setText(model.getDescription());
-        Picasso.get().load(model.getImg()).into(holder.imgProduct);
         holder.imgEdit.setOnClickListener(view -> {
             callback.editPr(model);
         });
@@ -75,10 +72,8 @@ public class TableListAdapter extends RecyclerView.Adapter<TableListAdapter.Tabl
             super(itemView);
             nameTextView = itemView.findViewById(R.id.tv_name);
             priceTextView = itemView.findViewById(R.id.tv_price);
-            imgProduct = itemView.findViewById(R.id.img_product);
             tvColor = itemView.findViewById(R.id.tv_color);
-            tvDescription = itemView.findViewById(R.id.tv_description);
-            quantityTextView = itemView.findViewById(R.id.tv_quantity);
+
             imgDelete = (ImageView) itemView.findViewById(R.id.img_delete);
             imgEdit = (ImageView) itemView.findViewById(R.id.img_edit);
         }

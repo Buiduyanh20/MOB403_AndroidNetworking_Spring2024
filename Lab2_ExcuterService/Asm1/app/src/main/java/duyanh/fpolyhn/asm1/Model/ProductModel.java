@@ -9,22 +9,17 @@ public class ProductModel{
     private String name;
     private int price;
     private String color;
-    private String img;
-    private int quantity;
-    private String description;
 
 
     public ProductModel() {
     }
 
-    public ProductModel(String id, String name, int price, String color, String img, int quantity, String description) {
+    public ProductModel(String id, String name, int price, String color ) {
         this.id = id;
         this.name = name;
         this.price = price;
         this.color = color;
-        this.img = img;
-        this.quantity = quantity;
-        this.description = description;
+
     }
 
     public String getName() {
@@ -43,13 +38,7 @@ public class ProductModel{
         this.price = price;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
 
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
 
     public String getId() {
         return id;
@@ -67,19 +56,4 @@ public class ProductModel{
         this.color = color;
     }
 
-    public String getImg() {
-        return img;
-    }
-
-    public void setImg(String img) {
-        this.img = img;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
 }

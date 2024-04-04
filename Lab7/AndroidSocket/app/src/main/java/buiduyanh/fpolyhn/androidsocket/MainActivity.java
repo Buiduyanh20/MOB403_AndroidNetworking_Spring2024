@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
         {
             try {
-                socket = IO.socket("http://192.168.0.101:3000");
+                socket = IO.socket("http://10.24.17.211:3000");
                 socket.emit("join",username);
             } catch (Exception e){
                 e.printStackTrace();
