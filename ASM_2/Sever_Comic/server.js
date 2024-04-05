@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 mongoose
-  .connect(`mongodb://localhost:27017/TestAsm`)
+  .connect(`mongodb://localhost:27017/DuyAnh_ASM2`)
   .then(() => {
     console.log("connet thanh cong");
   })
