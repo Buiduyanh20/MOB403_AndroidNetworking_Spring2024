@@ -1,48 +1,66 @@
 <div class="container">
-    <h1>Thêm truyện mới</h1>
-    <form id="myForm" method="post" action="addComic" >
-        {{!-- name --}}
-        <div class="form-group">
-            <label for="name">Tên truyện:</label>
-            <input type="text" class="form-control my-2" id="name" name="name" required>
-        </div>
+  <h1>Thêm truyện mới</h1>
+  <form id="myForm" method="post" action="addComic">
+    {{! name }}
+    <div class="form-group">
+      <label for="name">Tên truyện:</label>
+      <input
+        type="text"
+        class="form-control my-2"
+        id="name"
+        name="name"
+        required
+      />
+    </div>
 
-        {{!-- description --}}
-        <div class="form-group">
-            <label for="description">Mô tả:</label>
-            <input type="text" class="form-control my-2" id="description" name="description">
-        </div>
-        {{!-- author --}}
-        <div class="form-group">
-            <label for="author">Tác giả:</label>
-            <input type="text" class="form-control my-2" id="author" name="author">
-        </div>
-        {{!-- publicationYear --}}
-        <div class="form-group">
-            <label for="publicationYear">Năm xuất bản:</label>
-            <input type="Number" class="form-control my-2" id="publicationYear" name="publicationYear">
-        </div>
+    {{! description }}
+    <div class="form-group">
+      <label for="description">Thể loại:</label>
+      <input
+        type="text"
+        class="form-control my-2"
+        id="description"
+        name="description"
+      />
+    </div>
+    {{! author }}
+    <div class="form-group">
+      <label for="author">Tác giả:</label>
+      <input type="text" class="form-control my-2" id="author" name="author" />
+    </div>
+    {{! publicationYear }}
+    <div class="form-group">
+      <label for="publicationYear">Năm xuất bản:</label>
+      <input
+        type="Number"
+        class="form-control my-2"
+        id="publicationYear"
+        name="publicationYear"
+      />
+    </div>
 
-        {{!-- coverImage --}}
-        <div class="form-group">
-            <label for="coverImage" class="mb-2">Ảnh bìa:</label>
-            <input type="text" class="form-control my-2" id="coverImage" name="coverImage">
-        </div>
-        {{!-- images --}}
-        <div class="form-group">
-            
-            <label for="image" class="mb-2">Ảnh truyện:</label>
-            <input type="text" class="form-control my-2" id="image" name="image">
-        </div>
+    {{! coverImage }}
+    <div class="form-group">
+      <label for="coverImage" class="mb-2">Ảnh bìa:</label>
+      <input
+        type="text"
+        class="form-control my-2"
+        id="coverImage"
+        name="coverImage"
+      />
+    </div>
+    {{! images }}
+    <div class="form-group">
 
+      <label for="image" class="mb-2">Ảnh truyện:</label>
+      <input type="text" class="form-control my-2" id="image" name="image" />
+    </div>
 
-
-
-        <button type="submit" class="btn btn-primary my-2">Thêm</button>
-    </form>
+    <button type="submit" class="btn btn-primary my-2">Thêm</button>
+  </form>
 </div>
 
-{{!-- <script>
+{{! <script>
     //hiển thị hình ảnh đã chọn
     function previewImage(event) {
         var input = event.target;
@@ -60,4 +78,4 @@
 
 
 
-</script> --}}
+</script> }}
