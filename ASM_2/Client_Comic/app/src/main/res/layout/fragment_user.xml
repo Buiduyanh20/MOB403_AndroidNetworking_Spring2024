@@ -16,7 +16,7 @@
             android:id="@+id/toolbar"
             android:background="@color/orange"
             app:logo="@drawable/icon_app"
-            app:title="Truyện hay flexin"
+            app:title="Kho truyện miễn phí"
             app:titleTextColor="@color/white"
             app:titleMarginStart="30dp" />
         <LinearLayout

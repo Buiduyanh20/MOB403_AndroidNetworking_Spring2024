@@ -30,7 +30,7 @@
             android:id="@+id/tv_namecomment"
             android:textSize="17dp"
             android:textStyle="bold"
-            android:text="Mai Chi Cuong"
+            android:text="Bui Duy Anh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
         <TextView
