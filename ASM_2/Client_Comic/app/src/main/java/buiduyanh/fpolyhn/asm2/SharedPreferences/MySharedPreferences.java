@@ -15,7 +15,7 @@ public class MySharedPreferences {
     private static final String MY_PASSWD = "myPassword";
     private static final String MY_SAVEDATA = "myData";
     private static final String MY_ACCOUNT = "myAccount";
-    public static final String URL = "http://192.168.0.101:3000";
+    public static final String URL = "http://192.168.202.72:3000";
     public static void saveStrings(Context context, String my_username, String my_password, String my_data){
         SharedPreferences sharedPreferences = context.getSharedPreferences(MY_SHARED_PREFS, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
